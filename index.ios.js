@@ -40,9 +40,13 @@ export const getCategories = (categories) => {
   });
 };
 
+export const updateCategories = (categories) => {
+  RNNotificationActions.updateCategories(getCategories(categories));
+};
 
 export default {
   Action,
   Category,
-  getCategories
+  getCategories,
+  updateCategories
 };
