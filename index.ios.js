@@ -32,17 +32,11 @@ export class Category {
 
 }
 
-export const updateCategories = (categories) => {
-  let cats = categories.map((cat) => {
+export const getCategories = (categories) => {
+  return categories.map((cat) => {
     return Object.assign({}, cat.opts, {
       actions: cat.opts.actions.map((action) => action.opts)
     });
-  });
-
-  RNNotificationActions.updateCategories(cats);
-  // Re-update when permissions change
-  NativeAppEventEmitter.addListener('remoteNotificationsRegistered', () => {
-    RNNotificationActions.updateCategories(cats);
   });
 };
 
@@ -50,5 +44,5 @@ export const updateCategories = (categories) => {
 export default {
   Action,
   Category,
-  updateCategories
+  getCategories
 };
